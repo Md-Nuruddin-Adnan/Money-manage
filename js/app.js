@@ -25,9 +25,10 @@ form.addEventListener('submit', (e) => {
       tr.remove()
       if (index > -1) {
         total.splice(index, 1);
-        sum = total.reduce((a, b) => a + b, 0)
-        totalShow.innerHTML = sum
       }
+      sum = total.reduce((a, b) => a + b, 0)
+      totalShow.innerHTML = sum
+
     })
 
   })
