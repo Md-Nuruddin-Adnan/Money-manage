@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do App</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container my-md-5 my-3">
+    <h1 class="text-center">To Do</h1>
+    <form id="form">
+      <div class="row">
+        <div class="col-md-7 mb-md-0 mb-3">
+          <input id="income" type="text" class="form-control" placeholder="Income source">
+        </div>
+        <div class="col-md-3 mb-md-0 mb-3">
+          <input id="incomeAmount" type="number" class="form-control" placeholder="Amount">
+        </div>
+        <div class="col-md-2 mb-md-0 mb-3">
+          <button id="submit-btn" type="submit" class="btn btn-success w-100">Add</button>
+        </div>
+      </div>
+    </form>
+    <ul id="list" class="list-group my-5">
+      <li class="list-group-item d-flex justify-content-between align-items-center"> 
+        An item
+        <button class="btn btn-danger btn-sm">X</button>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const form = document.getElementById('form');
+    const submitBtn = document.getElementById('submit-btn');
+    const list = document.getElementById('list')
+    
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let income = document.getElementById('income').value
+      form.reset();
+      listGenerator(list, income);
+
+
+      [...list.children].forEach((li, index)=>{
+        const deleteBtn = document.querySelectorAll('li .btn-danger')[index]
+        deleteBtn.addEventListener('click', (e)=>{
+          e.target.parentElement.remove()
+        })
+        
+      })
+
+    });
+
+   
+
+
+
+
+
+
+  
+
+    let listGenerator = (list, value)=>{
+      let li = document.createElement('li')
+      li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center')
+
+      let btn = document.createElement('button')
+      btn.classList.add('btn', 'btn-danger', 'btn-sm')
+      btn.innerHTML = 'X'
+
+      li.innerText = value
+      li.insertAdjacentElement('beforeend', btn)
+
+      list.appendChild(li)
+    }
+  </script>
+</body>
+</html>
