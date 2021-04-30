@@ -1,5 +1,6 @@
 const form = document.getElementById('form');
 const tbody = document.getElementById('tbody')
+const totalShow = document.getElementById('total-show')
 
 let total = [];
 
@@ -9,10 +10,9 @@ form.addEventListener('submit', (e) => {
   let income = document.getElementById('income').value
   let amount = document.getElementById('amount').value
 
-  let num = parseInt(amount)
-  total.push(num)
-  let x = total.reduce((a, b) => a + b, 0)
-  console.log(x);
+  total.push(parseInt(amount))
+  let sum = total.reduce((a, b) => a + b, 0)
+  totalShow.innerHTML = sum
 
   form.reset();
   
@@ -20,10 +20,15 @@ form.addEventListener('submit', (e) => {
 
   [...tbody.children].forEach((tr, index)=>{
     const deleteBtn = document.querySelectorAll('tr .delete-btn')[index]
+
     deleteBtn.addEventListener('click', (e) => {
       tr.remove()
+      if (index > -1) {
+        total.splice(index, 1);
+        sum = total.reduce((a, b) => a + b, 0)
+        totalShow.innerHTML = sum
+      }
     })
-
 
   })
 
@@ -42,6 +47,7 @@ const trGenerator = (tbody, income, amount) => {
   tdAmount.innerHTML = amount
 
   let tdAction = document.createElement('td')
+  tdAction.classList.add('text-end')
   let deleteBtn = document.createElement('button')
   deleteBtn.innerHTML = 'X'
   deleteBtn.type = 'button'
