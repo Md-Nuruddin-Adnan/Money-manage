@@ -1,19 +1,11 @@
 const form = document.getElementById('form');
 const tbody = document.getElementById('tbody')
-const totalShow = document.getElementById('total-show')
-
-let total = [];
-
+const total = document.getElementById('total-show')
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let income = document.getElementById('income').value
   let amount = document.getElementById('amount').value
-
-
-  total.push(parseInt(amount))
-  let sum = total.reduce((a, b) => a + b, 0)
-  totalShow.innerHTML = sum
 
   form.reset();
   
@@ -23,21 +15,12 @@ form.addEventListener('submit', (e) => {
     let deleteBtn = document.querySelectorAll('tr .delete-btn')[index]
 
     deleteBtn.addEventListener('click', (e) => {
-
-      let value = parseInt(e.target.value)
-      let ind = total.indexOf(value)
-      
-      if (ind > -1) {
-        total.splice(ind, 1);
-        sum = total.reduce((a, b) => a + b, 0)
-        totalShow.innerHTML = sum
-      }
-      
       tr.remove()
+      total.innerHTML =  sum('tr .amount')
     });
-
   })
 
+  total.innerHTML =  sum('tr .amount')
 });
 
 
@@ -47,9 +30,10 @@ const trGenerator = (tbody, income, amount) => {
   
   let tdIncome = document.createElement('td')
   tdIncome.innerHTML = income
-
+  
   let tdAmount = document.createElement('td')
   tdAmount.innerHTML = amount
+  tdAmount.classList.add('amount')
 
   let tdAction = document.createElement('td')
   tdAction.classList.add('text-end')
@@ -67,3 +51,20 @@ const trGenerator = (tbody, income, amount) => {
   tbody.appendChild(tr)
 }
 // tr generator end
+
+
+
+// calculate start
+let sum = (column)=>{
+
+  let TotalValue = 0;
+
+  $(column).each(function(index,value){
+    currentRow = parseFloat($(this).text());
+    TotalValue += currentRow
+  });
+
+  return TotalValue;
+}
+// calculate end
+
