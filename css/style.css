@@ -23,10 +23,112 @@ a, a:hover {
 }
 
 body {
+  /* background: #ffffff; */
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-info {
+  background-color: #4bc0c0;
+  border-color: #4bc0c0;
+  color: #fff;
+}
+
+.btn-info:hover {
+  background-color: #3ea7a7;
+  border-color:  #3ea7a7;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: rgba(255, 206, 86, 1);
+  border-color: rgba(255, 206, 86, 1);
+  color: #444;
+}
+
+.btn-warning:hover {
+  background-color: rgba(255, 206, 86, .8);
+  border-color:  rgba(255, 206, 86, .8);
+  color: #444;
+}
+
+.btn-danger {
+  background-color: rgba(255, 99, 132, 1);
+  border-color: rgba(255, 99, 132, 1);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: rgba(255, 99, 132, 0.8);
+  border-color:  rgba(255, 99, 132, 0.8);
+  color: #fff;
 }
 /* basic css end */
 
+
+/* === chart section start === */
+.chart {
+  max-width: 350px;
+  margin: auto;
+  position: relative;
+  padding: 15px 0;
+}
+
+#balance {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+}
+#balance h2 {
+  font-weight: bolder;
+  color: #444;
+}
+/* ===//end of chart section === */
+
+
+/* === summary section start === */
+.summary {
+  margin: 30px 0 ;
+}
+
+.summary ul {
+  padding-left: 0;
+}
+
+.summary li {
+  font-size: 20px;
+  font-weight: 700;
+  color: #444;
+}
+/* ===//end of summary section === */
+
+
+/* === tab section start === */
+.nav-tabs {
+  border-bottom: 1px solid #4bc0c0;
+}
+.nav-tabs .nav-link {
+  font-weight: bold;
+  color: #444;
+}
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background-color: #4bc0c0;
+  border-color: #4bc0c0;
+  font-weight: bold;
+}
+
+.tab-content .card-title {
+  font-weight: bold;
+  color: #444;
+}
+/* ===//end of tab section === */
+
+
+/* === ? section start === */
+/* ===//end of ? section === */
 
 
 
@@ -37,7 +139,4 @@ body {
 /* ===//end of table section === */
 
 
-
-/* === ? section start === */
-/* ===//end of ? section === */
 
