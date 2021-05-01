@@ -38,7 +38,6 @@ const trGenerator = (tbody, income, amount) => {
   let tdAction = document.createElement('td')
   tdAction.classList.add('text-end')
   let deleteBtn = document.createElement('button')
-  deleteBtn.value = amount
   deleteBtn.innerHTML = 'X'
   deleteBtn.type = 'button'
   deleteBtn.classList.add('btn', 'delete-btn', 'btn-danger', 'btn-sm')
