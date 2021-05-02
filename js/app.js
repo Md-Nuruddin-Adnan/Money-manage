@@ -62,6 +62,11 @@ balance(globalIncome, globalExpense, balanceAmountShow);
 }
 
  
+// update chartArea
+let updateChart = (chart, expense, income)=>{
+  chart.data.datasets[0].data = [expense, income]
+  chart.update();
+}
 
 // Chart js end
 
@@ -112,12 +117,14 @@ incomeForm.addEventListener('submit', (e) => {
       totalIncomeShow.innerHTML =  sum('#income-tbody .amount')
       globalIncome = sum('#income-tbody .amount');
       balance(globalIncome, globalExpense, balanceAmountShow);
+      updateChart(myChart, globalIncome, globalExpense);
     });
   })
 
   totalIncomeShow.innerHTML =  sum('#income-tbody .amount')
   globalIncome = sum('#income-tbody .amount');
   balance(globalIncome, globalExpense, balanceAmountShow);
+  updateChart(myChart, globalIncome, globalExpense);
 });
 // income event end
 
@@ -141,12 +148,14 @@ expenseForm.addEventListener('submit', (e) => {
       totalExpenseShow.innerHTML =  sum('#expense-tbody .amount')
       globalExpense = sum('#expense-tbody .amount')
       balance(globalIncome, globalExpense, balanceAmountShow);
+      updateChart(myChart, globalIncome, globalExpense);
     });
   })
 
   totalExpenseShow.innerHTML =  sum('#expense-tbody .amount')
   globalExpense = sum('#expense-tbody .amount')
   balance(globalIncome, globalExpense, balanceAmountShow);
+  updateChart(myChart, globalIncome, globalExpense);
 });
 // expense event end
 
@@ -192,22 +201,25 @@ let sum = (column)=>{
 // calculate end
 
 // scroll top start
-let incomeTab = document.getElementById('income-tab');
-let expenseTab = document.getElementById('expense-tab');
-incomeTab.addEventListener('click', function(){
-  document.body.scrollTop = 500;
-  document.documentElement.scrollTop = 500;
-})
-expenseTab.addEventListener('click', function(){
-  document.body.scrollTop = 500;
-  document.documentElement.scrollTop = 500;
-})
+{
+  let incomeTab = document.getElementById('income-tab');
+  let expenseTab = document.getElementById('expense-tab');
+  incomeTab.addEventListener('click', function(){
+    let income = document.getElementById('income');
+    income.scrollIntoView()
+  })
+  expenseTab.addEventListener('click', function(){
+    let expense = document.getElementById('expense');
+    expense.scrollIntoView()
+  })
+}
 // scroll top end
+
 
 
 // balance calculator start 
 function balance(income, expense, showArea){
-  let bl = income - expense;
-  showArea.innerHTML = bl
+  let balance = income - expense;
+  showArea.innerHTML = balance
 }
 // balance calculator end
